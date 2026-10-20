@@ -26,6 +26,7 @@ public class TwoPointersProblem {
 
     // Time complexity = O(n)
     // Space complexity = O(1)
+    // Leet code 125: Valid Palindrome
     public boolean validPalindromeOptimized(String s) {
         int left = 0, right = s.length() - 1;
 
@@ -41,6 +42,7 @@ public class TwoPointersProblem {
         return true;
     }
 
+    // Leet code 15: 3Sum
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
@@ -65,5 +67,20 @@ public class TwoPointersProblem {
             }
         }
         return result;
+    }
+
+    // Leet code 11. Container with most water
+    public int maxWater(int[] height){
+        int maxWater = 0;
+        int left = 0, right = height.length -1;
+        while(left < right) {
+            int width = right - left;
+            int currentHeight = Math.min(height[left], height[right]);
+            int currentWater = width * currentHeight;
+            maxWater = Math.max(maxWater, currentWater);
+            if(height[left] < height[right]) left++;
+            else right--;
+        }
+        return maxWater;
     }
 }
